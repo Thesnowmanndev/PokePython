@@ -19,7 +19,7 @@ class Game:
         self.all_sprites = AllSprites()
         
         self.import_assets()
-        self.setup(self.tmx_maps['hospital'], 'world')
+        self.setup(self.tmx_maps['world'], 'player_spawn')
     
     def import_assets(self):
         self.tmx_maps = {
@@ -30,6 +30,10 @@ class Game:
     def setup(self, tmx_map, player_start_pos):
         # Render Terrain layer
         for x, y, surf in tmx_map.get_layer_by_name('Terrain').tiles():
+            Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
+            
+        # Render Terrain Top Layer
+        for x, y, surf in tmx_map.get_layer_by_name('Terrain Top').tiles():
             Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
         
         # Render Objects layer
