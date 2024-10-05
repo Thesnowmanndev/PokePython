@@ -46,7 +46,7 @@ class Game:
             
             # game logic
             self.all_sprites.update(dt)
-            self.all_sprites.draw(self.display_surface)
+            self.all_sprites.draw()
             pygame.display.update()
             
 if __name__ == '__main__':
