@@ -34,7 +34,8 @@ class Game:
     def run(self):
         while True:
             # track framerate 
-            self.clock.tick(60)
+            # https://www.youtube.com/watch?v=rWtfClpWSb8 - Understand Framerate & DeltaTime
+            dt = self.clock.tick() / 1000
             
             # event loop
             for event in pygame.event.get():
@@ -43,9 +44,8 @@ class Game:
                     exit()
             
             # game logic
-            self.all_sprites.update()
+            self.all_sprites.update(dt)
             self.all_sprites.draw(self.display_surface)
-            print(self.clock.get_fps())
             pygame.display.update()
             
 if __name__ == '__main__':

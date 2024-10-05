@@ -1,5 +1,7 @@
 from settings import *
 
+VELOCITY = 250
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups):
         super().__init__(groups)
@@ -23,9 +25,9 @@ class Player(pygame.sprite.Sprite):
             input_vector.x += 1
         self.direction = input_vector
     
-    def move(self):
-        self.rect.center += self.direction * 2
+    def move(self, dt):
+        self.rect.center += self.direction * VELOCITY * dt
     
-    def update(self):
+    def update(self, dt):
         self.input()
-        self.move()
+        self.move(dt)
