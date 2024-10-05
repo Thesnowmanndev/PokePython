@@ -30,7 +30,7 @@ class Game:
             
         for obj in tmx_map.get_layer_by_name('Entities'):
             if obj.name == 'Player' and obj.properties['pos'] == player_start_pos:
-                Player((obj.x, obj.y), self.all_sprites)
+                self.player = Player((obj.x, obj.y), self.all_sprites)
     
     def run(self):
         while True:
@@ -46,7 +46,7 @@ class Game:
             
             # game logic
             self.all_sprites.update(dt)
-            self.all_sprites.draw()
+            self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
             
 if __name__ == '__main__':
