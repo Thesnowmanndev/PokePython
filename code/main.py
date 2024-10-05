@@ -25,9 +25,15 @@ class Game:
         self.tmx_maps = {'world': load_pygame(join('data', 'maps', 'world.tmx'))}
     
     def setup(self, tmx_map, player_start_pos):
+        # Render Terrain layer
         for x, y, surf in tmx_map.get_layer_by_name('Terrain').tiles():
             Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites)
-            
+        
+        # Render Objects layer
+        for obj in tmx_map.get_layer_by_name('Objects'):
+            Sprite((obj.x, obj.y), obj.image, self.all_sprites)
+        
+        # Render Entities layer    
         for obj in tmx_map.get_layer_by_name('Entities'):
             if obj.name == 'Player' and obj.properties['pos'] == player_start_pos:
                 self.player = Player((obj.x, obj.y), self.all_sprites)
