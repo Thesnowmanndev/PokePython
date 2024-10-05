@@ -4,6 +4,7 @@ from os.path import join
 # pip install pytmx
 from pytmx.util_pygame import load_pygame
 
+from groups import AllSprites
 from sprites import Sprite
 from entities import Player
 
@@ -15,7 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         
         # groups
-        self.all_sprites = pygame.sprite.Group()
+        self.all_sprites = AllSprites()
         
         self.import_assets()
         self.setup(self.tmx_maps['world'], 'house')
