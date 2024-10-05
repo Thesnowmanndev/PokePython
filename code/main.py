@@ -46,6 +46,7 @@ class Game:
             
             # game logic
             self.all_sprites.update(dt)
+            self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)
             pygame.display.update()
             
